@@ -13,13 +13,13 @@ public class Main {
         grades.add(36.5);
         grades.add(67.0);
         Lecture biology = new Lecture();
-        Student dzifa = new Student(grades, "dzifa");
+        Student dzifa = new Student(grades, "dzifa", Level.HIGH);
 
         List<Double> grades2 = new ArrayList<>();
         grades2.add(44.5);
         grades2.add(2.9);
         grades2.add(6.0);
-        Student richard = new Student(grades2, "Richard");
+        Student richard = new Student(grades2, "Richard", Level.HIGH);
         biology.enter(dzifa);
         biology.enter(richard);
         System.out.println(biology.getStudentList().stream().mapToDouble(Student::getAverageGrade).max().getAsDouble());

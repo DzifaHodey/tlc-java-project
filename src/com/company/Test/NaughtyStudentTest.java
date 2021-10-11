@@ -1,5 +1,6 @@
 package com.company.Test;
 
+import com.company.Level;
 import com.company.NaughtyStudent;
 import com.company.Student;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +19,7 @@ class NaughtyStudentTest {
     void setUp() {
         reportedGrades.add(3.4);
         reportedGrades.add(30.5);
-        ebuka = new NaughtyStudent(reportedGrades, "Ebuka");
+        ebuka = new NaughtyStudent(reportedGrades, "Ebuka", Level.HIGH);
 
     }
 

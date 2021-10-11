@@ -3,8 +3,8 @@ package com.company;
 import java.util.List;
 
 public class NaughtyStudent extends Student{
-    public NaughtyStudent(List<Double> gradesList, String name) {
-        super(gradesList,name);
+    public NaughtyStudent(List<Double> gradesList, String name, Level level) {
+        super(gradesList,name, level);
     }
 
     private double increaseAverageGrade(){

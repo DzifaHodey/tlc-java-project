@@ -1,5 +1,6 @@
 package com.company.Test;
 
+import com.company.Level;
 import com.company.Student;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +23,7 @@ class StudentTest {
             grades.add(25.0);
         }
         grades.add(30.5);
-        dzifa = new Student(grades, "Dzifa");
+        dzifa = new Student(grades, "Dzifa", Level.LOW);
     }
 
 
