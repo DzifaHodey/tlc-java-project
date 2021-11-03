@@ -1,6 +1,9 @@
-package com.company;
+package com.company.Test;
 
 
+import com.company.NaughtyStudent;
+import com.company.Student;
+import com.company.Year;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -7,4 +7,11 @@ public class Lecturer {
     public Lecturer(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Lecturer{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Student {
 
@@ -29,4 +30,17 @@ public class Student {
     }
 
 
+    public Stream<Double> getGradesAsStream() {
+        return gradesList.stream();
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", name='" + name + '\'' +
+                ", year=" + year +
+                ", gradesList=" + gradesList +
+                '}';
+    }
 }

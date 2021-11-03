@@ -1,8 +1,9 @@
 package com.company;
 
 import java.security.spec.EllipticCurve;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -16,46 +17,46 @@ public class Main {
         List<Double> grades1 = List.of(60.50, 77.0, 84.5, 45.5, 78.0);
         List<Double> grades2 = List.of(50.0, 50.0, 60.0, 60.0);
 
+        var students = List.of(
+            new Student(1120, "Dzifa", Year.FIRST, grades),
+            new Student(1121, "Joseph", Year.FIRST, grades),
+            new Student(1122, "Dave", Year.FIRST, grades),
+            new Student(2120, "Ama", Year.SECOND, grades),
+            new Student(2121, "Kofi", Year.SECOND, grades),
+            new Student(2123, "Ohene", Year.SECOND, grades),
+            new Student(3133, "Yaa", Year.THIRD, grades2),
+            new Student(3134, "Kingsley", Year.THIRD, grades2),
+            new Student(3135, "Raymond", Year.THIRD, grades),
+            new Student(4140, "Scholastica", Year.FOURTH, grades1),
+            new Student(4141, "Emmanuelina", Year.FOURTH, grades1));
 
-        Student dzifa = new Student(1120, "Dzifa", Year.FIRST, grades);
-        Student joseph = new Student(1121, "Joseph", Year.FIRST, grades);
-        Student dave = new Student(1122, "Dave", Year.FIRST, grades);
+        var firstYearStudents = students.stream().filter(student -> student.getYear() == Year.FIRST).toList();
+        var secondYearStudents = students.stream().filter(student -> student.getYear() == Year.SECOND).toList();
+        var thirdYearStudents = students.stream().filter(student -> student.getYear() == Year.THIRD).toList();
+        var fourthYearStudents = students.stream().filter(student -> student.getYear() == Year.FOURTH).toList();
 
-        Student ama = new Student(2120, "Ama", Year.SECOND, grades);
-        Student kofi = new Student(2121, "Kofi", Year.SECOND, grades);
-        Student ohene = new Student(2123, "Ohene", Year.SECOND, grades);
-
-        Student yaa = new Student(3133, "Yaa", Year.THIRD, grades2);
-        Student kingsley = new Student(3134, "Kingsley", Year.THIRD, grades2);
-        Student raymond = new Student(3135, "Raymond", Year.THIRD, grades);
-
-        Student scholastica = new Student(4140, "Scholastica", Year.FOURTH, grades1);
-        Student emmanuelina = new Student(4141, "Emmanuelina", Year.FOURTH, grades1);
-        Student gwendolyne = new Student(4142, "Gwendolyne", Year.FOURTH, grades1);
-
-        List<Student> students = List.of(scholastica, emmanuelina, gwendolyne, ohene, yaa, kingsley, raymond);
-
+        System.out.println(fourthYearStudents);
         Lecturer sam = new Lecturer("Sam");
         Lecturer dan = new Lecturer("Dan");
         Lecturer ken = new Lecturer("Ken");
 
-        Course introToProgramming = new Course("Intro To Programming", sam, List.of(dzifa, joseph, dave), Year.FIRST);
-        Course advancedGardening = new Course("Advanced Gardening", dan, List.of(yaa, kingsley, raymond, scholastica, emmanuelina, gwendolyne), Year.FOURTH);
+        Course introToProgramming = new Course("Intro To Programming", sam, firstYearStudents, Year.FIRST);
 
-        List<Student> fourthYearStartsWithVowel = students.stream().filter(student -> student.getYear() == Year.FOURTH).collect(Collectors.toList());
+        Course advancedGardening = new Course("Advanced Gardening", dan, Stream.of(thirdYearStudents,fourthYearStudents).flatMap(Collection::stream).toList(), Year.FOURTH);
 
-        Course physics = new Course("Physics", ken, List.of(emmanuelina), Year.FOURTH);
+        List<Student> fourthYearStartsWithVowel = fourthYearStudents.stream().filter(student -> student.getName().toLowerCase().matches("[aeiou]")).toList();
 
-        System.out.println("Dzifa's average grade: " + dzifa.getAverageGrade() + "%");
-        System.out.println("Yaa's average grade: " + yaa.getAverageGrade() + "%");
-        System.out.println();
+        Course physics = new Course("Physics", ken, fourthYearStartsWithVowel, Year.FOURTH);
+
 
         System.out.println("Physics enrolment: " + physics.getStudentList());
         System.out.println("Advanced Gardening enrolment: " + advancedGardening.getStudentList());
         System.out.println("Highest Average Grade for Adv Gardening: " + advancedGardening.getHighestAverageGrade()+ "%");
 
-
-
+        Register register1 = new Register(students);
+        List<String> talkativeList = new ArrayList<String>();
+        Collections.addAll(talkativeList, "Dzifa", "Yaw", "Akos", "Joseph");
+        System.out.println(register1.getStudentsByName(talkativeList));
 
 
 
