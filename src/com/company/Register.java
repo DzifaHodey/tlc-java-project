@@ -48,7 +48,7 @@ public class Register {
     }
 
     public List<Student> getStudentsByName(List<String> names){
-        return studentList.stream().filter(student -> names.contains(student.getName())).toList();
+        return studentList.stream().filter(student -> names.contains(student.getName())).collect(Collectors.toList());
 
 //        List<Student> talkatives = new ArrayList<>();
 //        for (Student student : studentList){

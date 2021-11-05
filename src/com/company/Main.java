@@ -21,7 +21,7 @@ public class Main {
             new Student(1120, "Dzifa", Year.FIRST, grades),
             new Student(1121, "Joseph", Year.FIRST, grades),
             new Student(1122, "Dave", Year.FIRST, grades),
-            new Student(2120, "Ama", Year.SECOND, grades),
+            new Student(2120, "Ama", Year.FOURTH, grades),
             new Student(2121, "Kofi", Year.SECOND, grades),
             new Student(2123, "Ohene", Year.SECOND, grades),
             new Student(3133, "Yaa", Year.THIRD, grades2),
@@ -44,7 +44,9 @@ public class Main {
 
         Course advancedGardening = new Course("Advanced Gardening", dan, Stream.of(thirdYearStudents,fourthYearStudents).flatMap(Collection::stream).toList(), Year.FOURTH);
 
-        List<Student> fourthYearStartsWithVowel = fourthYearStudents.stream().filter(student -> student.getName().toLowerCase().matches("[aeiou]")).toList();
+        List<Student> fourthYearStartsWithVowel = fourthYearStudents.stream().filter(student -> "aeiou".contains(student.getName().substring(0,1).toLowerCase())).toList();
+
+
 
         Course physics = new Course("Physics", ken, fourthYearStartsWithVowel, Year.FOURTH);
 
@@ -54,7 +56,7 @@ public class Main {
         System.out.println("Highest Average Grade for Adv Gardening: " + advancedGardening.getHighestAverageGrade()+ "%");
 
         Register register1 = new Register(students);
-        List<String> talkativeList = new ArrayList<String>();
+        List<String> talkativeList = new ArrayList<>();
         Collections.addAll(talkativeList, "Dzifa", "Yaw", "Akos", "Joseph");
         System.out.println(register1.getStudentsByName(talkativeList));
 

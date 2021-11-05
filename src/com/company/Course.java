@@ -19,7 +19,7 @@ public class Course {
     }
 
     public List<String> getStudentList() {
-        return studentList.stream().map(student -> student.getName()).collect(Collectors.toList());
+        return this.studentList.stream().map(student -> student.getName()).collect(Collectors.toList());
     }
 
     public void enterStudent(Student student){
